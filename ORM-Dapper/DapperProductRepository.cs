@@ -19,6 +19,8 @@ public class DapperProductRepository : IProductRepository
 
     public void CreateProduct(string name, double price, int categoryID)
     {
-        throw new NotImplementedException();
+        _connection.Execute("INSERT INTO products (Name, Price, CategoryID)" +
+                                   "VALUES (@Name, @Price, @CategoryID)",
+                                    new { name = name, price = price, categoryID = categoryID }); 
     }
 }
